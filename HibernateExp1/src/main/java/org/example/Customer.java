@@ -1,9 +1,6 @@
 package org.example;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Customers")
@@ -11,13 +8,18 @@ public class Customer {
     @Column
     private  String customerfirstName,customerLastName,customerAddress;
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer customerId;
 
-    public Customer(String customerfirstName, String customerLastName, String customerAddress, Integer customerId) {
+    public Customer(String customerfirstName, String customerLastName, String customerAddress) {
         this.customerfirstName = customerfirstName;
         this.customerLastName = customerLastName;
         this.customerAddress = customerAddress;
-        this.customerId = customerId;
+    }
+
+    // creating no arg customer
+    public Customer(){
+
     }
 
     @Override
